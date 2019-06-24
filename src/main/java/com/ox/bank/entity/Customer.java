@@ -1,5 +1,7 @@
 package com.ox.bank.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,8 @@ public class Customer {
 	int creditScore;
 	long salary;
 	long expense;
+	LocalDate dob ;
+	long workExperience;
 
 	/*
 	 * @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy =
@@ -94,6 +98,22 @@ public class Customer {
 	}
 	public void setExpense(long expense) {
 		this.expense = expense;
+	}
+
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+
+	public long getWorkExperience() {
+		return workExperience;
+	}
+
+	public void setWorkExperience(long workExperience) {
+		this.workExperience = workExperience;
 	}
 
 

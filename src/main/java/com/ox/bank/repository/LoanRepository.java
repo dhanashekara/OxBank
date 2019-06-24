@@ -8,4 +8,6 @@ import com.ox.bank.entity.Loan;
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long>{
 
+	Loan findBycustomerId(long id);
+
 }

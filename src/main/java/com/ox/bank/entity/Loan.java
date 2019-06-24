@@ -16,11 +16,10 @@ public class Loan {
 	long loanAmount;
 	long officerId;
 	long customerId;
-	
-	public Loan(){
+
+	public Loan() {
 		super();
 	}
-
 
 	/*
 	 * @ManyToOne
@@ -32,16 +31,12 @@ public class Loan {
 	 * @JoinColumn Customer customer;
 	 */
 
-
-	public Loan(long loanAccountNumber, String loanStatus, long loanAmount,long officerId,long customerId) {
+	public Loan(long loanAccountNumber, String loanStatus, long loanAmount, long officerId, long customerId) {
 		super();
 		this.loanAccountNumber = loanAccountNumber;
 		this.loanStatus = loanStatus;
 		this.loanAmount = loanAmount;
 	}
-
-
-
 
 	public long getLoanAccountNumber() {
 		return loanAccountNumber;
@@ -67,29 +62,17 @@ public class Loan {
 		this.loanAmount = loanAmount;
 	}
 
-
-
-
 	public long getOfficerId() {
 		return officerId;
 	}
-
-
-
 
 	public void setOfficerId(long officerId) {
 		this.officerId = officerId;
 	}
 
-
-
-
 	public long getCustomerId() {
 		return customerId;
 	}
-
-
-
 
 	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
@@ -104,5 +87,5 @@ public class Loan {
 	 * 
 	 * public void setCustomer(Customer customer) { this.customer = customer; }
 	 */
-	
+
 }

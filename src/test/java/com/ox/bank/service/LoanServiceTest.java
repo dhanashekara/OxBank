@@ -1,4 +1,4 @@
-/*package com.ox.bank.service;
+package com.ox.bank.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,9 +9,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.ox.bank.entity.Customer;
 import com.ox.bank.entity.Loan;
-import com.ox.bank.entity.Officer;
 import com.ox.bank.repository.LoanRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,22 +24,24 @@ public class LoanServiceTest {
 	
 	
 	
-	  @Test public void createLoanTest() {
+	  @Test 
+	  public void createLoanTest() {
 	  
-	  // Officer officer = new Officer(10); // Customer customer = new
-	  Customer(10);
+	  // Officer officer = new Officer(10); 
+	 // Customer customer = new Customer(10);
 	  
-	  //Positive case Loan loan = new Loan(10,"pending",500,10,10);
-	  Mockito.when(loanRepo.save(loan)).thenReturn(loan); String actualResult=
-	  loanSerive.createLoan(loan);
+	  //Positive case 
+	  Loan loan = new Loan(10,"pending",500,10,10);
+	  Mockito.when(loanRepo.save(loan)).thenReturn(loan); 
+	  String actualResult=loanSerive.createLoan(loan);
 	  assertEquals("Loan Created!!Pending for Approval", actualResult);
 	  
-	  //Negative case loan = null; String actualResultNegative=
-	  loanSerive.createLoan(loan);
-	  assertEquals("Loan not created!! Please contact support team",
-	  actualResultNegative);
+	  //Negative case 
+	  loan = null; 
+	  String actualResultNegative = loanSerive.createLoan(loan);
+	  assertEquals("Loan not created!! Please contact support team",actualResultNegative);
 	  
 	  }
 	 
 	
-}*/
+}

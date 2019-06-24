@@ -8,4 +8,5 @@ import com.ox.bank.entity.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
+
 }
