@@ -42,17 +42,19 @@ public class LoanService {
 	public String loanApproval(Customer customer, long officerId) throws LoanException {
 
 		// age calculation
-	//	LocalDate currentDate = LocalDate.now();
-		// int age = Years.yearsBetween(customer.getDob(), currentDate);
-	//	int age = Period.between(customer.getDob(), currentDate).getYears();
-		int age = 26;
+		LocalDate currentDate = LocalDate.now();
+	//	System.out.println("date"+currentDate);
 		Customer cust = customerRepo.findById(customer.getId()).get();
+		// int age = Years.yearsBetween(customer.getDob(), currentDate);
+		int age = Period.between(cust.getDob(), currentDate).getYears();
+	//	int age = 26;
 		
+		Loan loan = loanRepo.findBycustomerId(cust.getId());
 		if (cust.getCreditScore() > 900) {
 			if (cust.getWorkExperience() >= 24) {
 				if (age >= 24 && age <= 50) {
 
-					Loan loan = loanRepo.findBycustomerId(cust.getId());
+					
 					loan.setLoanStatus("Approved");
 
 					if (loanRepo.save(loan) != null)
@@ -62,16 +64,20 @@ public class LoanService {
 
 				} else {
 					// throw new LoanException("Age criteria is not matching");
+					loan.setLoanStatus("Rejected");
 					return "Age criteria is not matching!!";
 				}
 			} else {
 				// throw new LoanException("Work experience is less!!");
+				loan.setLoanStatus("Rejected");
 				return "Work experience is less!!";
 			}
 		} else {
 			// throw new LoanException("Credit Score is less!!");
+			loan.setLoanStatus("Rejected");
 			return "Credit Score is less!!";
 		}
+		
 
 	}
 
