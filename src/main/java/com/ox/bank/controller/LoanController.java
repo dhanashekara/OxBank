@@ -3,6 +3,7 @@ package com.ox.bank.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,11 +30,11 @@ public class LoanController {
 			return new ResponseEntity<String>("Loan not created!! Please contact support team", HttpStatus.BAD_REQUEST);
 	}
 
-	@PutMapping("/loanApproval/{officerId}")
-	public ResponseEntity<String> loanApproval(@RequestBody Customer customer, @PathVariable long officerId)
+	@PutMapping("/loanApproval/{loanId}")
+	public ResponseEntity<String> loanApproval(@PathVariable long loanId)
 			throws LoanException {
 
-		String status = loanService.loanApproval(customer, officerId);
+		String status = loanService.loanApproval(loanId);
 
 		if (status.equalsIgnoreCase("Loan Approved!!"))
 			return new ResponseEntity<String>(status, HttpStatus.OK);
@@ -41,5 +42,12 @@ public class LoanController {
 			return new ResponseEntity<String>(status, HttpStatus.BAD_REQUEST);
 
 	}
-
+	/*
+	 * @DeleteMapping("/deleteLoan/{loanId}/{officerId}") public void
+	 * deleteLoan(@PathVariable long loanId, long officerId) {
+	 * 
+	 * new ResponseEntity<String>("Loan is deleted!!");
+	 * 
+	 * }
+	 */
 }
