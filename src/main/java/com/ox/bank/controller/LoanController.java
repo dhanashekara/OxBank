@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ox.bank.Exception.LoanException;
-import com.ox.bank.entity.Customer;
 import com.ox.bank.entity.Loan;
 import com.ox.bank.service.LoanService;
 
@@ -42,12 +41,14 @@ public class LoanController {
 			return new ResponseEntity<String>(status, HttpStatus.BAD_REQUEST);
 
 	}
-	/*
-	 * @DeleteMapping("/deleteLoan/{loanId}/{officerId}") public void
-	 * deleteLoan(@PathVariable long loanId, long officerId) {
-	 * 
-	 * new ResponseEntity<String>("Loan is deleted!!");
-	 * 
-	 * }
-	 */
+	
+	  @DeleteMapping("/deleteLoan/{loanId}/{officerId}")
+	  public String deleteLoan(@PathVariable long loanId, long officerId)throws LoanException 
+		{
+		  if(loanService.deleteLoan(loanId, officerId).equalsIgnoreCase("Loan successfully deleted")) {
+			  return "Loan successfully deleted";
+		}else 
+			return "Loan not deleted";
+		
+}
 }
